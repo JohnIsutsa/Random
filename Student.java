@@ -20,13 +20,13 @@ public class Student {
 
     }
 
-    void displayName(ArrayList<Student> std){
+    static void displayName(ArrayList<Student> std){
         for(Student student: std ){ 
             System.out.println("Student name: " + student.name);    
         } 
     }
 
-    void feesBalance(ArrayList<Student> std){
+    static void feesBalance(ArrayList<Student> std){
         double sum=0;
         for(Student student: std){
             sum = sum + student.feesBalance;
@@ -45,13 +45,14 @@ public class Student {
             hm.put(student.major, (j == null) ? 1 : j + 1);
         }
  
-        // displaying the occurrence of elements in the arraylist
+        // finding the number of occurrences of the major with the most students
         for (Map.Entry<String, Integer> val : hm.entrySet()) {
             if(max < val.getValue()){
                 max = val.getValue();
             }
         } 
 
+        //returning the key value of the major with the most students
         for (Map.Entry<String, Integer> val : hm.entrySet()){
             if(val.getValue() == max){
                 System.out.println("The major with the most students is: "+ val.getKey());
@@ -68,6 +69,7 @@ public class Student {
         Student std4 = new Student(8134, "Kojo", 34000, "Geology");
         Student std5 = new Student(9033, "Jen", 8000, "Law");
 
+        //adding students to an array list
         List<Student> student = new ArrayList<Student>();
         student.add(std1);
         student.add(std2);
@@ -75,9 +77,8 @@ public class Student {
         student.add(std4);
         student.add(std5);
 
-        Student temp = new Student();
-        temp.displayName((ArrayList<Student>) student);
-        temp.feesBalance((ArrayList<Student>) student);
+        displayName((ArrayList<Student>) student);
+        feesBalance((ArrayList<Student>) student);
         getMode((ArrayList<Student>) student);
     }
 }
